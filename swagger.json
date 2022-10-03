@@ -1,0 +1,218 @@
+{
+"swagger": "2.0",
+      "info": {
+        "version": "1.0.0",
+        "title": "Assignment 7 Swagger",
+        "description": "Urvashi's API documentation",
+        "license": {
+          "name": "MIT",
+          "url": "https://opensource.org/licenses/MIT"
+        }
+      },
+      "host": "68.183.114.87:3000",
+      "basePath": "/",
+      "tags": [
+        {
+          "name": "Students",
+          "description": "API for students"
+        }
+      ],
+      "schemes": ["http"],
+      "consumes": ["application/json"],
+      "produces": ["application/json"],
+
+      "paths": {
+        "/customer":{
+            "get": {
+                "summary": "Show all customers",
+                "produces": [
+                "application/json"
+             ],
+            "responses": {
+            "200": {
+                "description": "Success"
+                }
+            }
+        }
+    },
+        "/customer_newyork":{
+            "get": {
+                "summary": "Show all customers from newyork",
+                "produces": [
+                "application/json"
+             ],
+            "responses": {
+            "200": {
+                "description": "Success!"
+                }
+            }
+        }
+    },  
+        "/studentdetail":{
+            "get": {
+                "summary": "Show all student details",
+                "produces": [
+                "application/json"
+             ],
+            "responses": {
+            "200": {
+                "description": "Success"
+                }
+            }
+        }
+    },  
+        "/company":{
+            "get": {
+                "summary": "Show all companies",
+                "produces": [
+                "application/json"
+             ],
+            "responses": {
+            "200": {
+                "description": "Success"
+                }
+            }
+        }
+    },  
+        "/agent":{
+            "get": {
+                "summary": "Show all agent",
+                "produces": [
+                "application/json"
+             ],
+            "responses": {
+            "200": {
+                "description": "Success"
+                }
+            }
+        }
+    },  
+        "/addstudent":{
+            "post": {
+                "summary": "Add a student",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Post Student",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Student"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Student Added"
+                        }
+                    }
+              }
+        },
+        "/student/{rollid}":{
+            
+        "delete": {
+            "summary": "Delete a student",
+            "description": "Delete a student",
+            "consumes": ["application/json"],
+            "produces": ["plain/text"],
+            "parameters": [
+                {
+                    "name": "rollid",
+                    "in": "path",
+                    "description": "Roll id for student"
+                    
+                }
+            ],
+            "responses": {
+               
+                "404": {
+                    "description": "Student not found"
+                }
+                }
+        }
+        },
+        "/student": {
+      "put": {
+          "summary": "Update a student's detail",
+          "description": "Update a student",
+          "consumes": ["application/json"],
+          "produces": ["application/json"],
+          "parameters": [
+              {
+                  "name": "body",
+                  "in": "body",
+                  "description": "Post data",
+                  "required": true,
+                  "schema": {
+                      "$ref": "#/definitions/Student"
+                  }
+              }
+          ],
+          "responses": {
+              "201": {
+                  "description": "Created"
+                  }
+              
+             
+              }
+      },
+      "patch": {
+          "summary": "Update student details if found",
+          "description": "Update student details if found",
+          "consumes": ["application/json"],
+          "produces": ["application/json"],
+          "parameters": [
+              {
+                  "name": "body",
+                  "in": "body",
+                  "description": "Update json body",
+                  "required": true,
+                  "schema": {
+                      "$ref": "#/definitions/Student"
+                  }
+              }
+          ],
+          "responses": {
+            "200": {
+                "description": "Success"
+                },
+              "404": {
+                  "description": "No student found"
+              }
+              }
+      }
+      },
+      
+      "consumes": [
+        "application/json"
+      ]
+    },
+  
+    "definitions": {
+      "Student": {
+          "type": "object",
+          "required": ["rollid"],
+          "properties": {
+              "rollid": {
+                  "type": "integer",
+                  "format": "int64" 
+              },
+              "name": {
+                  "type": "string"
+              },
+              "class": {
+                  "type": "string"
+              },
+              "title": {
+                  "type": "string"
+              },
+              "section":{
+                "type": "string"
+              }
+          }
+      }
+    }
+}
+
